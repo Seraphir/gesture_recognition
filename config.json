@@ -1,6 +1,6 @@
 {
     "name": "Gesture_MergeNet",
-    "n_gpu": 0,
+    "n_gpu": 1,
 
     "arch": {
         "type": "MergeNet",
@@ -12,10 +12,10 @@
         "type": "GestureDataLoader",
         "args":{
             "data_dir": "data/three_g",
-            "batch_size": 4,
+            "batch_size": 1,
             "shuffle": true,
             "validation_split": 0.1,
-            "num_workers": 4
+            "num_workers": 1
         }
     },
     "optimizer": {
