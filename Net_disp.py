@@ -1,11 +1,11 @@
 import torch
-from model.model import VGG
+from model.model import MergeNet
 from torchvision.models import AlexNet
 from torchviz import make_dot
 import tensorwatch as tw
 
 x = torch.rand(1, 3, 224, 224)
-model = AlexNet()
+model = MergeNet()
 y = model(x)
 
 # g = make_dot(y)

@@ -1,18 +1,18 @@
 {
-    "name": "ATM_VGG",
+    "name": "Gesture_MergeNet",
     "n_gpu": 0,
 
     "arch": {
-        "type": "VGG",
+        "type": "MergeNet",
         "args": {
             "num_classes": 3
         }
     },
     "data_loader": {
-        "type": "ATMDataLoader",
+        "type": "GestureDataLoader",
         "args":{
             "data_dir": "data/three_g",
-            "batch_size": 32,
+            "batch_size": 4,
             "shuffle": true,
             "validation_split": 0.1,
             "num_workers": 4
