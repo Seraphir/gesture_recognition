@@ -1,19 +1,21 @@
 {
-    "name": "Mnist_LeNet",
-    "n_gpu": 1,
+    "name": "ATM_VGG",
+    "n_gpu": 0,
 
     "arch": {
-        "type": "MnistModel",
-        "args": {}
+        "type": "VGG",
+        "args": {
+            "num_classes": 3
+        }
     },
     "data_loader": {
-        "type": "MnistDataLoader",
+        "type": "ATMDataLoader",
         "args":{
-            "data_dir": "data/",
-            "batch_size": 128,
+            "data_dir": "data/three_g",
+            "batch_size": 32,
             "shuffle": true,
             "validation_split": 0.1,
-            "num_workers": 2
+            "num_workers": 4
         }
     },
     "optimizer": {
@@ -36,7 +38,7 @@
         }
     },
     "trainer": {
-        "epochs": 100,
+        "epochs": 10,
 
         "save_dir": "saved/",
         "save_period": 1,
