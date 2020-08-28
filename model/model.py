@@ -40,8 +40,8 @@ class MergeNet(nn.Module):
         x2 = self.lc3d(x2)
         x = torch.cat((x1, x2), dim=1)
         x = self.classifier(x)
-
-        return F.log_softmax(x, dim=1)
+        # F.log_softmax(x, dim=1)
+        return x
 
 
 # if __name__ == "__main__":
