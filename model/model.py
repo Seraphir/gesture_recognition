@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from base import BaseModel
+from torchvision.models import resnet50
 from torchvision.models import vgg16
 from .C3D_model import C3D
 
