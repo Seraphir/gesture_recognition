@@ -8,9 +8,10 @@ import numpy as np
 
 
 class GestureData(Dataset):
-    def __init__(self, data_dir, transform=None):  # __init__是初始化该类的一些基础参数
+    def __init__(self, data_dir, index_file="index.txt", transform=None):  # __init__是初始化该类的一些基础参数
         self.transform = transform  # 变换
         self.data_dir = data_dir
+        self.index_file = index_file
         self.resize_height = 112
         self.resize_width = 112
         self.img_video_labels = self._read_index_text()
@@ -28,7 +29,7 @@ class GestureData(Dataset):
         return img, video, label  # 返回该样本
 
     def _read_index_text(self):
-        fh = open(os.path.join('./', self.data_dir, 'index.txt'), 'r')
+        fh = open(os.path.join('./', self.data_dir, self.index_file), 'r')
         img_video_labels = []
         for line in fh:
             line = line.strip('\n')

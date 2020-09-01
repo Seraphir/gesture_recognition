@@ -5,13 +5,13 @@
     "arch": {
         "type": "MergeNet",
         "args": {
-            "num_classes": 3
+            "num_classes": 10
         }
     },
     "data_loader": {
         "type": "GestureDataLoader",
         "args":{
-            "data_dir": "data/three_g",
+            "data_dir": "data/gesture",
             "batch_size": 1,
             "shuffle": true,
             "validation_split": 0.1,
