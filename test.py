@@ -45,9 +45,9 @@ def main(config):
     total_metrics = torch.zeros(len(metric_fns))
 
     with torch.no_grad():
-        for i, (data, target) in enumerate(tqdm(data_loader)):
-            data, target = data.to(device), target.to(device)
-            output = model(data)
+        for i, (image, video, target) in enumerate(tqdm(data_loader)):
+            image, video, target = image.to(device), video.to(device), target.to(device)
+            output = model(image,video)
 
             #
             # save sample images, or do something with output here
@@ -55,7 +55,7 @@ def main(config):
 
             # computing loss, metrics on test set
             loss = loss_fn(output, target)
-            batch_size = data.shape[0]
+            batch_size = image.shape[0]
             total_loss += loss.item() * batch_size
             for i, metric in enumerate(metric_fns):
                 total_metrics[i] += metric(output, target) * batch_size
