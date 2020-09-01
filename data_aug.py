@@ -5,7 +5,7 @@ import pickle as pkl
 import scipy.io as io
 import matplotlib.pyplot as plt
 
-root_dir = ".\\data\\gesture"
+root_dir = ".\\data\\cgest"
 
 subdata_dir1 = os.path.join(root_dir, ".\\atmMat")
 subdata_dir2 = os.path.join(root_dir, ".\\RdMat")
@@ -101,20 +101,6 @@ class data_augmentation:
         return mat
 
 
-# if not os.path.exists(storedata_dir1):
-#     os.makedirs(storedata_dir1)
-# for classname, atm_class_ls in atm_mat_dict.items():
-#     sub_dir = os.path.join(storedata_dir1, classname)
-#     if not os.path.exists(sub_dir):
-#         os.makedirs(sub_dir)
-#     for i, atm_mat in enumerate(atm_class_ls):
-#         save_path = os.path.join(sub_dir, "{:04d}.png".format(i))
-#         atm_mat = cv2.resize(atm_mat, (224, 224))
-#         cv2.imwrite(save_path, np.uint8(atm_mat * 255))
-#         print(classname, i)
-# cv2.imshow("atm", atm_mat)
-# cv2.waitKey(0)
-
 # element = np.vstack([np.zeros(63), np.linspace(0, 1, 63), np.zeros(63)])
 # test_img = np.tile(element, (21, 1)).astype(np.float64)
 # test_img[31, :] = np.flip(np.linspace(0, 1, 63))
@@ -150,7 +136,11 @@ for classname, rd_class_ls in rd_mats_dict.items():
             save_path2 = os.path.join(sub_sub_dir2, "{:02d}.png".format(j))
             rd_mat = (rd_mat / max_value) ** 0.4
             rd_mat_t = DataAug.transform(rd_mat)
-            cv2.imwrite(save_path2, np.uint8(rd_mat * 255))
+
+            rd_mat_t = rd_mat_t[14:45, :15]
+            rd_mat_t = cv2.resize(rd_mat_t, (112, 112))
+
+            cv2.imwrite(save_path2, np.uint8(rd_mat_t * 255))
 
             # test
             # test_img = np.hstack([test_img[:, 5:], test_img[:, :5]])
