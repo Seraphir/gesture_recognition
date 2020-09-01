@@ -112,3 +112,4 @@ datasets/
 __MACOSX/
 model/espnet_model.pdf
 model/espnet_model
+*.pth

@@ -12,10 +12,10 @@
         "type": "GestureDataLoader",
         "args": {
             "data_dir": "data/gesture",
-            "index_file": "index_50.txt",
+            "index_file": "index.txt",
             "batch_size": 1,
             "shuffle": true,
-            "validation_split": 0.2,
+            "validation_split": 0.0,
             "num_workers": 1
         }
     },
