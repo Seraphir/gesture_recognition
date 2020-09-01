@@ -68,7 +68,7 @@ class C3DVGG(nn.Module):
         x1 = self.avgpool(x1)
         x1 = torch.flatten(x1, 1)
         x1 = self.lc2d(x1)
-        x2 = self.net3d.features(x2)
+        x2 = self.net3d(x2)
         x2 = x2.view(-1, 8192)
         x2 = self.lc3d(x2)
         x = torch.cat((x1, x2), dim=1)
