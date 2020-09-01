@@ -45,6 +45,8 @@ class GestureData(Dataset):
         buffer = np.empty((frame_count, self.resize_height, self.resize_width, 3), np.dtype('float32'))
         for i, frame_path in enumerate(frame_paths):
             frame = cv2.imread(frame_path)
+            if frame.ndim < 3:
+                frame = np.dstack([frame, frame, frame])
             frame = cv2.resize(frame, (self.resize_height, self.resize_width))
             frame = np.array(frame).astype(np.float64)
             buffer[i] = frame
