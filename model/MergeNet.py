@@ -11,12 +11,12 @@ class MergeNet(nn.Module):
 
     def __init__(self, num_classes=3):
         super().__init__()
-        self.net2d = vgg16(pretrained=False, num_classes=num_classes).features()
+        self.net2d = vgg16(pretrained=False, num_classes=num_classes)
         self.lc2d = nn.Sequential(
             nn.Linear(512 * 7 * 7, 4096),
             nn.ReLU(True)
         )
-        self.net3d = C3D(pretrained=False, num_classes=num_classes).features()
+        self.net3d = C3D(pretrained=False, num_classes=num_classes)
         self.lc3d = nn.Sequential(
             nn.Linear(8192, 4096),
             nn.ReLU(True)
@@ -32,11 +32,11 @@ class MergeNet(nn.Module):
         )
 
     def forward(self, x1, x2):
-        x1 = self.net2d(x1)
+        x1 = self.net2d.features(x1)
         x1 = self.net2d.avgpool(x1)
         x1 = torch.flatten(x1, 1)
         x1 = self.lc2d(x1)
-        x2 = self.net3d(x2)
+        x2 = self.net3d.features(x2)
         x2 = x2.view(-1, 8192)
         x2 = self.lc3d(x2)
         x = torch.cat((x1, x2), dim=1)
