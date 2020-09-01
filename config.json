@@ -5,7 +5,8 @@
     "arch": {
         "type": "MergeNet",
         "args": {
-            "num_classes": 10
+            "num_classes": 10,
+            "finetune": "./finetune.pth"
         }
     },
     "data_loader": {
