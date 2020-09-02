@@ -20,11 +20,11 @@
         }
     },
     "optimizer": {
-        "type": "Adam",
+        "type": "SGD",
         "args":{
-            "lr": 0.00001,
-            "weight_decay": 0.0,
-            "amsgrad": true
+            "lr": 0.0001,
+            "momentum": 0.9,
+            "weight_decay": 5e-4
         }
     },
     "loss": "CrossEntropyLoss",
