@@ -1,9 +1,9 @@
 {
-    "name": "Gesture_MergeNet",
+    "name": "Gesture_4pic",
     "n_gpu": 1,
 
     "arch": {
-        "type": "C3DVGG",
+        "type": "SimpleC3DVGG",
         "args": {
             "num_classes": 10
         }
@@ -12,7 +12,7 @@
         "type": "GestureDataLoader",
         "args": {
             "data_dir": "data/cropgest",
-            "index_file": "index.txt",
+            "index_file": "index2_all_aug.txt",
             "batch_size": 1,
             "shuffle": true,
             "validation_split": 0.0,
