@@ -15,10 +15,10 @@ def main(config):
     data_loader = getattr(module_data, config['data_loader']['type'])(
         # config['data_loader']['args']['data_dir'],
         # config['data_loader']['args']["index_file"],
-        # "data/target",
-        # "index2.txt",
-        "data/cropgest",
-        "index2_50.txt",
+        "data/target",
+        "index.txt",
+        # "data/cropgest",
+        # "index_50.txt",
         batch_size=1,
         shuffle=False,
         validation_split=0.0,
@@ -78,7 +78,7 @@ if __name__ == '__main__':
     args = argparse.ArgumentParser(description='PyTorch Template')
     args.add_argument('-c', '--config', default=None, type=str,
                       help='config file path (default: None)')
-    args.add_argument('-r', '--resume', default=".\\saved\\models\\Gesture_MergeNet\\0902_120812\\checkpoint-epoch3.pth", type=str,
+    args.add_argument('-r', '--resume', default=".\\saved\\models\\Gesture_MergeNet\\0902_153302\\checkpoint-epoch1.pth", type=str,
                       help='path to latest checkpoint (default: None)')
     args.add_argument('-d', '--device', default=None, type=str,
                       help='indices of GPUs to enable (default: all)')

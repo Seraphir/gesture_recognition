@@ -13,7 +13,7 @@
         "type": "GestureDataLoader",
         "args": {
             "data_dir": "data/cropgest",
-            "index_file": "index2.txt",
+            "index_file": "index_all.txt",
             "batch_size": 1,
             "shuffle": true,
             "validation_split": 0.0,
