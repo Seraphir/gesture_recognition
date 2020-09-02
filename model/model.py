@@ -140,7 +140,7 @@ class SimpleC3DVGG(nn.Module):
     def forward(self, x1, x2):
         x1 = self.net2d(x1)
         x1 = self.avgpool(x1)
-        x1 = torch.flatten(x1, 1)
+        x1 = x1.view(-1, 25088)
         x2 = self.net3d(x2)
         x2 = x2.view(-1, 8192)
         x = torch.cat((x1, x2), dim=1)
