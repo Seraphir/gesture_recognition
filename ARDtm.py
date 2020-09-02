@@ -4,11 +4,11 @@ import numpy as np
 import pickle as pkl
 import scipy.io as io
 
-root_dir = ".\\data\\cgest"
-data_type = ""
-subdata_dir1 = os.path.join(root_dir, "atmDataSet")
-subdata_dir2 = os.path.join(root_dir, "RDDataSet")
-storedata_dir = os.path.join(root_dir, "ardtmDataSet")
+root_dir = ".\\data\\cropgest"
+data_type = "_aug"
+subdata_dir1 = os.path.join(root_dir, "atmDataSet{}".format(data_type))
+subdata_dir2 = os.path.join(root_dir, "RDDataSet{}".format(data_type))
+storedata_dir = os.path.join(root_dir, "ardtmDataSet{}".format(data_type))
 
 if not os.path.exists(storedata_dir):
     os.makedirs(storedata_dir)
@@ -27,8 +27,11 @@ for classname in os.listdir(subdata_dir1):
         atm_mat = cv2.imread(os.path.join(sub_dir1, "{}.png".format(idx)))
         if atm_mat.ndim > 2:
             atm_mat = atm_mat[:, :, 0]
-        rtm_mat = np.zeros((112, 32))
-        dtm_mat = np.zeros((112, 32))
+        img_dir = os.path.join(sub_dir2, "{}".format(idx), "00.png")
+        rd_mat = cv2.imread(img_dir)
+        h0, w0 = rd_mat.shape[:2]
+        rtm_mat = np.zeros((w0, 32))
+        dtm_mat = np.zeros((h0, 32))
         for j in range(32):
             img_dir = os.path.join(sub_dir2, "{}".format(idx), "{:02d}.png".format(j))
             rd_mat = cv2.imread(img_dir)
