@@ -5,14 +5,15 @@
     "arch": {
         "type": "SimpleC3DVGG",
         "args": {
-            "num_classes": 10
+            "num_classes": 10,
+            "finetune": "./finetune.pth"
         }
     },
     "data_loader": {
         "type": "GestureDataLoader",
         "args": {
             "data_dir": "data/cropgest",
-            "index_file": "index2_all_aug.txt",
+            "index_file": "index2_all.txt",
             "batch_size": 4,
             "shuffle": true,
             "validation_split": 0.0,

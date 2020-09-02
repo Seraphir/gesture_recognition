@@ -114,3 +114,4 @@ model/espnet_model.pdf
 model/espnet_model
 *.pth
 *.mat
+config.json

@@ -49,14 +49,17 @@ def main(config):
 
     total_loss = 0.0
     total_metrics = torch.zeros(len(metric_fns))
-
+    error_list=[]
     with torch.no_grad():
         for i, (image, video, target) in enumerate(tqdm(data_loader)):
             image, video, target = image.to(device), video.to(device), target.to(device)
-            output = model(image,video)
+            output = model(image, video)
 
             #
             # save sample images, or do something with output here
+            pred = output.data.max(1, keepdim=True)[1]
+            if pred != target:
+                error_list.append(i)
             #
 
             # computing loss, metrics on test set
@@ -72,13 +75,15 @@ def main(config):
         met.__name__: total_metrics[i].item() / n_samples for i, met in enumerate(metric_fns)
     })
     logger.info(log)
+    print(error_list)
 
 
 if __name__ == '__main__':
     args = argparse.ArgumentParser(description='PyTorch Template')
     args.add_argument('-c', '--config', default=None, type=str,
                       help='config file path (default: None)')
-    args.add_argument('-r', '--resume', default=".\\saved\\models\\Gesture_MergeNet\\0902_173040\\checkpoint-epoch3.pth", type=str,
+    args.add_argument('-r', '--resume', default=".\\saved\\models\\Gesture_4pic\\0902_211017\\checkpoint-epoch5.pth",
+                      type=str,
                       help='path to latest checkpoint (default: None)')
     args.add_argument('-d', '--device', default=None, type=str,
                       help='indices of GPUs to enable (default: all)')
