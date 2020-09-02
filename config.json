@@ -13,7 +13,7 @@
         "args": {
             "data_dir": "data/cropgest",
             "index_file": "index2_all_aug.txt",
-            "batch_size": 1,
+            "batch_size": 4,
             "shuffle": true,
             "validation_split": 0.0,
             "num_workers": 1
