@@ -3,10 +3,9 @@
     "n_gpu": 1,
 
     "arch": {
-        "type": "MergeNet",
+        "type": "C3DVGG",
         "args": {
-            "num_classes": 10,
-            "finetune": "./finetune.pth"
+            "num_classes": 10
         }
     },
     "data_loader": {
@@ -16,7 +15,7 @@
             "index_file": "index.txt",
             "batch_size": 1,
             "shuffle": true,
-            "validation_split": 0.0,
+            "validation_split": 0.5,
             "num_workers": 1
         }
     },
