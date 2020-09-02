@@ -62,6 +62,7 @@ class C3DVGG(nn.Module):
         if finetune is not None:
             checkpoint = torch.load(finetune)
             self.load_state_dict(checkpoint['state_dict'])
+            print("loaded {}".format(finetune))
 
     def forward(self, x1, x2):
         x1 = self.net2d(x1)

@@ -8,10 +8,11 @@ import numpy as np
 
 
 class GestureData(Dataset):
-    def __init__(self, data_dir, index_file="index.txt", transform=None):  # __init__是初始化该类的一些基础参数
+    def __init__(self, data_dir, index_file="index.txt", transform=None, gamma=None):  # __init__是初始化该类的一些基础参数
         self.transform = transform  # 变换
         self.data_dir = data_dir
         self.index_file = index_file
+        self.gamma = gamma
         self.resize_height = 112
         self.resize_width = 112
         self.img_video_labels = self._read_index_text()
@@ -49,6 +50,8 @@ class GestureData(Dataset):
             if frame.ndim < 3:
                 frame = np.dstack([frame, frame, frame])
             frame = cv2.resize(frame, (self.resize_height, self.resize_width))
+            if self.gamma is not None:
+                frame = frame ** self.gamma
             frame = np.array(frame).astype(np.float64)
             buffer[i] = frame
         return buffer
