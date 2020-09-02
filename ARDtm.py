@@ -41,7 +41,8 @@ for classname in os.listdir(subdata_dir1):
         h, w = atm_mat.shape
         rtm_mat = cv2.resize(rtm_mat, (h, w))
         dtm_mat = cv2.resize(dtm_mat, (h, w))
-        ardtm_mat = np.dstack([atm_mat, rtm_mat, dtm_mat])
+        ardtm_mat = np.vstack([np.hstack([atm_mat, rtm_mat]), np.hstack([dtm_mat, atm_mat])])
+        ardtm_mat = cv2.resize(ardtm_mat, (h, w))
         cv2.imwrite(save_path, ardtm_mat)
         print(classname, idx)
     total_cnt.append(class_cnt)
