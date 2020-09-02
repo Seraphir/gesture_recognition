@@ -5,7 +5,7 @@ import pickle as pkl
 import scipy.io as io
 import matplotlib.pyplot as plt
 
-root_dir = ".\\data\\cgest"
+root_dir = ".\\data\\cropgest"
 
 subdata_dir1 = os.path.join(root_dir, ".\\atmMat")
 subdata_dir2 = os.path.join(root_dir, ".\\RdMat")
