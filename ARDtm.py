@@ -4,8 +4,8 @@ import numpy as np
 import pickle as pkl
 import scipy.io as io
 
-root_dir = ".\\data\\target"
-data_type = ""
+root_dir = ".\\data\\cropgest"
+data_type = "_aug"
 subdata_dir1 = os.path.join(root_dir, "atmDataSet{}".format(data_type))
 subdata_dir2 = os.path.join(root_dir, "RDDataSet{}".format(data_type))
 storedata_dir = os.path.join(root_dir, "ardtmDataSet{}".format(data_type))
