@@ -1,9 +1,9 @@
 {
-    "name": "Gesture_4pic",
+    "name": "Gesture_MergeNet",
     "n_gpu": 1,
 
     "arch": {
-        "type": "SimpleC3DVGG",
+        "type": "C3DVGG",
         "args": {
             "num_classes": 10
         }
@@ -12,7 +12,7 @@
         "type": "GestureDataLoader",
         "args": {
             "data_dir": "data/cropgest",
-            "index_file": "index2_all_aug.txt",
+            "index_file": "index.txt",
             "batch_size": 1,
             "shuffle": true,
             "validation_split": 0.0,
@@ -23,8 +23,8 @@
         "type": "SGD",
         "args":{
             "lr": 0.0001,
-            "weight_decay": 5e-4,
-            "momentum": 0.9
+            "momentum": 0.9,
+            "weight_decay": 5e-4
         }
     },
     "loss": "CrossEntropyLoss",
@@ -44,7 +44,7 @@
         "save_dir": "saved/",
         "save_period": 1,
         "verbosity": 2,
-
+        
         "monitor": "min val_loss",
         "early_stop": 10,
 
