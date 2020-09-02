@@ -152,6 +152,7 @@ for base_times in range(4):
                 # rd_mat = (rd_mat / max_value) ** 0.4
                 rd_mat = rd_mat / max(np.max(rd_mat), 1)
                 rd_mat_t = DataAug.transform(rd_mat)
+                rd_mat = rd_mat[14:45, :15]
                 cv2.imwrite(save_path2, np.uint8(rd_mat * 255))
 
                 # test
