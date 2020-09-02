@@ -118,7 +118,6 @@ class data_augmentation:
 # element = np.vstack([np.zeros(63), np.linspace(0, 1, 63), np.zeros(63)])
 # test_img = np.tile(element, (21, 1)).astype(np.float64)
 # test_img[31, :] = np.flip(np.linspace(0, 1, 63))
-base_times = 3
 if not os.path.exists(storedata_dir1):
     os.makedirs(storedata_dir1)
 if not os.path.exists(storedata_dir2):
@@ -153,6 +152,7 @@ for base_times in range(4):
                 rd_mat = rd_mat / max(np.max(rd_mat), 1)
                 rd_mat_t = DataAug.transform(rd_mat)
                 rd_mat = rd_mat[14:45, :15]
+                rd_mat = cv2.resize(rd_mat, (112, 112))
                 cv2.imwrite(save_path2, np.uint8(rd_mat * 255))
 
                 # test
